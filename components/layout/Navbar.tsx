@@ -1,16 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+
+//@TODO Mocking for now, but this will be for the protected dashboard page/auth logic in the future
+const isAuthenticated = true;
+const userRole = "publisher";
 
 export default function Navbar() {
   const currentRoute = usePathname();
 
-  const navLinks = [
-    { href: "/", label: "STORE" },
-    { href: "/library", label: "LIBRARY" },
-    { href: "/dashboard", label: "DASHBOARD" },
-  ];
+const navLinks = [
+  { href: "/", label: "STORE" },
+  { href: "/library", label: "LIBRARY" },
+  ...(isAuthenticated && userRole === "publisher"
+    ? [{ href: "/dashboard", label: "DASHBOARD" }]
+    : []),
+];
 
   return (
     <header className="shadow-md bg-[rgba(64,129,196,0.65)] rounded-full">
@@ -30,12 +37,14 @@ export default function Navbar() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center space-x-4">
-            <Link href="/sign-in">Sign in</Link>
-            <Link href="/sign-up">Sign Up</Link>
-          </div>
-        </div>
+        {/* @TODO FAKE/MOCK LOGIN */}
+        <Image
+          src="/images/avatar.png"
+          alt="mock avatar icon"
+          width={186}
+          height={55}
+          className="w-[150px] h-auto cursor-not-allowed"
+        />
       </div>
     </header>
   );
