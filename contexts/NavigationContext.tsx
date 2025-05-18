@@ -93,83 +93,26 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
 
     // Skip updating history if we're using the navigation buttons
     // Clicking the buttons set the ref current to true
-    if (isUsingNavButtons.current && pathname === navigationTarget.current) {
+    if (isUsingNavButtons.current) {
+      console.log('skipping updating history, using nav buttons')
       isUsingNavButtons.current = false;
-      navigationTarget.current = "";
       return;
-    }
-
-    // Reset the navigation flags if path changed unexpectedly
-    if (navigationTarget.current && pathname !== navigationTarget.current) {
-      navigationTarget.current = "";
-      isUsingNavButtons.current = false;
     }
 
     // Do nothing if the nav path is clicked twice (and we're already there)
     if (history[currentPosition]?.path === pathname) {
-      return;
-    }
-
-    // Check if browser back/forward buttons were used
-    let backIndex = -1;
-    let forwardIndex = -1;
-
-    // Look for matches in the backward direction
-    if (currentPosition > 0) {
-      for (let i = currentPosition - 1; i >= 0; i--) {
-        if (history[i].path === pathname) {
-          backIndex = i;
-          break;
-        }
-      }
-    }
-
-    // Look for matches in the forward direction
-    if (currentPosition < history.length - 1) {
-      for (let i = currentPosition + 1; i < history.length; i++) {
-        if (history[i].path === pathname) {
-          forwardIndex = i;
-          break;
-        }
-      }
-    }
-
-    // Determine if this is a back or forward navigation
-    if (backIndex !== -1 || forwardIndex !== -1) {
-      // If we have matches in both directions, we need to determine which is more likely
-      if (backIndex !== -1 && forwardIndex !== -1) {
-        // We can use the distance from current position to determine direction
-        // The smaller distance is more likely the actual navigation
-        const backDistance = currentPosition - backIndex;
-        const forwardDistance = forwardIndex - currentPosition;
-
-        if (backDistance <= forwardDistance) {
-          setCurrentPosition(backIndex);
-        } else {
-          setCurrentPosition(forwardIndex);
-        }
-      }
-      // Only back match found
-      else if (backIndex !== -1) {
-        setCurrentPosition(backIndex);
-      }
-      // Only forward match found
-      else {
-        setCurrentPosition(forwardIndex);
-      }
+      console.log('already at desired path');
       return;
     }
 
     // Regular navigation - add new entry
     setHistory(prev => {
-      // If we're not at the end of the history, truncate the forward history
-      const newHistory = currentPosition < prev.length - 1
-        ? prev.slice(0, currentPosition + 1)
-        : [...prev];
+      const newHistory = [...prev];
 
       // Add the new path
       const newEntry = { path: pathname, id: generateId() };
       newHistory.push(newEntry);
+      console.log('adding new entry')
 
       // Update position to the end
       setCurrentPosition(newHistory.length - 1);
