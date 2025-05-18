@@ -3,15 +3,23 @@
 :root {
   --background: #063B8B;
   --foreground: #fff;
+  --primary: #4081C4;
+  --secondary: #0B41A6;
+  --accent: #48BFF0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-logo: var(--font-sansation);
   --font-header: var(--font-martel-sans);
   --font-body: var(--font-libre-franklin);
   --font-callout: var(--font-ember);
+}
+
+.gradient-sky {
+  @apply bg-gradient-to-b from-[#4BAFF4] to-[#1C8AD8];
 }
 
 body {
