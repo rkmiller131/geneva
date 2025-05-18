@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CloudBackground from "@/components/layout/CloudBackground";
+import { NavigationProvider } from "@/contexts/NavigationContext";
 
 const sansation = localFont({
   src: [
@@ -62,17 +63,21 @@ export default function RootLayout({
         className={`${sansation.className} ${ember.className} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased`}
       >
         <CloudBackground />
-        <div className={`flex flex-col
-            min-h-screen mx-auto w-full max-w-[1464px]
-            px-4 sm:px-6 lg:px-8 xl:px-15 py-8
-            bg-[url(/images/cloud-texture.webp)] bg-center bg-cover bg-repeat-y
-          `}>
-          <Navbar />
-          <main className="w-full max-w-[1315px] px-4 sm:px-6 lg:px-8 xl:px-15 py-8">
-            {children}
-          </main>
-        </div>
-        <Footer />
+        <NavigationProvider>
+          {/* Repeating middle background texture and container gutters wrap app (except footer) */}
+          <div className={`flex flex-col
+              min-h-screen mx-auto w-full max-w-[1464px]
+              px-4 sm:px-6 lg:px-8 xl:px-15 py-8
+              bg-[url(/images/cloud-texture.webp)] bg-center bg-cover bg-repeat-y
+            `}>
+            <Navbar />
+            {/* Main content also has a container gutter shorter than navbar */}
+            <main className="w-full max-w-[1315px] px-4 sm:px-6 lg:px-8 xl:px-15 py-8">
+              {children}
+            </main>
+          </div>
+          <Footer />
+        </NavigationProvider>
       </body>
     </html>
   );
