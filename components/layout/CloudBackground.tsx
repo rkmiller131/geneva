@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function CloudBackground() {
   return (
     <div className="absolute w-full min-h-[145vh] z-[-1]">
-      <div className="absolute top-[-474px] left-[-570px] rotate-[137deg]">
+      <div className="absolute top-[-525px] left-[-570px] rotate-[137deg]">
         <Image
           src="/images/cloud-minor.webp"
           alt="small cloud texture"
