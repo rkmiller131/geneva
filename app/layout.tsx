@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CloudBackground from "@/components/layout/CloudBackground";
 
 const sansation = localFont({
   src: [
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body
         className={`${sansation.className} ${ember.className} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased`}
       >
+        <CloudBackground />
         <div className="flex flex-col min-h-screen mx-auto w-full max-w-[1464px] px-4 sm:px-6 lg:px-8 xl:px-15 py-8">
           <Navbar />
           <main className="w-full max-w-[1315px] px-4 sm:px-6 lg:px-8 xl:px-15 py-8">
