@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Martel_Sans, Libre_Franklin } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CloudBackground from "@/components/layout/CloudBackground";
 import { NavigationProvider } from "@/contexts/NavigationContext";
+
+import "./globals.css";
 
 const sansation = localFont({
   src: [
@@ -43,6 +44,7 @@ const martelSans = Martel_Sans({
 const libreFranklin = Libre_Franklin({
   variable: "--font-libre-franklin",
   weight: "600",
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap"
 })
@@ -60,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scrollbar-hidden">
       <body
-        className={`${sansation.className} ${ember.className} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased`}
+        className={`${sansation.variable} ${ember.variable} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased`}
       >
         <CloudBackground />
         <NavigationProvider>

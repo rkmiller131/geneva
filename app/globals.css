@@ -6,12 +6,15 @@
   --primary: #4081C4;
   --secondary: #0B41A6;
   --accent: #48BFF0;
+  --charcoal: #0D0C15;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --color-accent: var(--accent);
+  --color-charcoal: var(--charcoal);
   --font-logo: var(--font-sansation);
   --font-header: var(--font-martel-sans);
   --font-body: var(--font-libre-franklin);
