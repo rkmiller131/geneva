@@ -24,7 +24,7 @@ const navLinks = [
     <header className="shadow-md bg-[rgba(64,129,196,0.65)] rounded-full">
       <div className="container mx-auto flex h-16 items-center justify-between px-8">
         {/* Left side of Navbar */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4">
           <NavigationArrows />
           <nav className="flex">
             {navLinks.map(({ href, label }) => (
