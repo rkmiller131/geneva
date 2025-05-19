@@ -2,6 +2,7 @@ import Carousel from "@/components/ui/Carousel";
 import FeaturedGame from "@/components/ui/FeaturedGame";
 import GeneralStoreFilters from "@/components/ui/GeneralStoreFilters";
 import GlobalSearchbar from "@/components/ui/GlobalSearchbar";
+import TriOffsetCarousel from "@/components/ui/TriOffsetCarousel";
 import Image from "next/image";
 
 export default function Store() {
@@ -13,7 +14,7 @@ export default function Store() {
       {/* Main content panels */}
       <div className="flex">
         {/* LEFT PANEL */}
-        <div className="flex flex-col gap-6 mr-6">
+        <div className="flex flex-col gap-6 mr-6 mt-[-10px]">
           {/* GENEVA LOGO */}
           <div className="flex flex-col gap-4 mb-6">
             <div className="flex flex-col">
@@ -36,14 +37,15 @@ export default function Store() {
             alt="How it works"
             width={170}
             height={167}
+            className="ml-[-15px]"
           />
 
           <GeneralStoreFilters />
         </div>
 
         {/* RIGHT PANEL */}
-        <div className="flex flex-col mt-8 grow items-end">
-          <div className="cursor-not-allowed flex gap-4 self-start ml-18 mb-6 font-header">
+        <div className="flex flex-col gap-6 mt-8 grow items-end">
+          <div className="cursor-not-allowed flex gap-4 self-start ml-18 font-header">
             <span className="border-b">Featured & Recommended</span>
             <span>New & Noteworthy</span>
           </div>
@@ -81,6 +83,10 @@ export default function Store() {
                 isOnSale: false
               }}/>
           </Carousel>
+
+          <div className="w-full mt-32">
+            <TriOffsetCarousel />
+          </div>
         </div>
 
       </div>
