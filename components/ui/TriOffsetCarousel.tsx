@@ -1,82 +1,37 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from 'gsap';
 import CarouselArrow from "./CarouselArrow";
+import SpecialOfferCard from "./SpecialOfferCard";
+import { IGame } from "@/app/lib/types/store.types";
 
-const specialOffers = [
-  {
-    id: 432,
-    title: "",
-    bannerUrl: "",
-    videoUrl: "",
-    tags: [],
-    originalPrice: 39.99,
-    salePercentage: 20,
-    isOnSale: true
-  },
-  {
-    id: 982,
-    title: "",
-    bannerUrl: "",
-    videoUrl: "",
-    tags: [],
-    originalPrice: 39.99,
-    salePercentage: 20,
-    isOnSale: true
-  },
-  {
-    id: 146,
-    title: "",
-    bannerUrl: "",
-    videoUrl: "",
-    tags: [],
-    originalPrice: 39.99,
-    salePercentage: 20,
-    isOnSale: true
-  },
-  // {
-  //   id: 375,
-  //   title: "",
-  //   bannerUrl: "",
-  //   videoUrl: "",
-  //   tags: [],
-  //   originalPrice: 39.99,
-  //   salePercentage: 20,
-  //   isOnSale: true
-  // },
-]
+interface TriOffsetCarouselProps {
+  gameList: IGame[];
+}
 
-export default function TriOffsetCarousel() {
+export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0); // the center card
-  const [cards, setCards] = useState(specialOffers.slice(0, 3));
+  const [cards, setCards] = useState(gameList.slice(0, 3));
 
   // Navigate to next card
-  // const nextCard = useCallback(() => {
-  //   const prevIndex = (currentIndex + 1) % specialOffers.length;
-  //   setCurrentIndex(prevIndex);
-  // }, [currentIndex]);
   const nextCard = () => {
-    const prevIndex = (currentIndex + 1) % specialOffers.length;
+    const prevIndex = (currentIndex + 1) % gameList.length;
     setCurrentIndex(prevIndex);
   };
 
   // Navigate to previous card
-  // const prevCard = useCallback(() => {
-  //   const prevIndex = (currentIndex - 1) % specialOffers.length;
-  //   setCurrentIndex(prevIndex);
-  // }, [currentIndex]);
   const prevCard = () => {
-    const prevIndex = (currentIndex - 1) % specialOffers.length;
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : currentIndex;
     setCurrentIndex(prevIndex);
   };
 
   useEffect(() => {
-    const newIndex = (currentIndex + 1) % specialOffers.length;
-    const lastIndex = newIndex + 1 === specialOffers.length ? 0 : newIndex + 1 === specialOffers.length + 1 ? newIndex : newIndex + 1;
-    const firstIndex = newIndex - 1 >= 0 ? newIndex - 1 : specialOffers.length - 1;
+    const newIndex = (currentIndex + 1) % gameList.length;
+    const lastIndex = newIndex + 1 === gameList.length ? 0 : newIndex + 1 === gameList.length + 1 ? newIndex : newIndex + 1;
+    const firstIndex = newIndex - 1 >= 0 ? newIndex - 1 : gameList.length - 1;
 
-    const newCards = [specialOffers[firstIndex], specialOffers[newIndex], specialOffers[lastIndex]];
+    const newCards = [gameList[firstIndex], gameList[newIndex], gameList[lastIndex]];
     setCards(newCards);
 
     gsap.fromTo(`#card${newCards[0].id}`,
@@ -93,28 +48,40 @@ export default function TriOffsetCarousel() {
     )
     gsap.fromTo(`#card${newCards[1].id}`,
         {
-            x: '55%',
+            x: '85%',
             y: '0%'
         },
         {
-            x: '-55%',
+            x: '-85%',
             y: '0%',
             duration: 1,
             ease: 'cubic.out'
         }
     )
+    // gsap.fromTo(`#card${newCards[2].id}`,
+    //     {
+    //         x: '-100%',
+    //         y: '0%'
+    //     },
+    //     {
+    //         x: '-20%',
+    //         y: '0%',
+    //         duration: 1,
+    //         ease: 'cubic.out'
+    //     }
+    // );
     gsap.fromTo(`#card${newCards[2].id}`,
-        {
-            x: '-100%',
-            y: '20%'
-        },
-        {
-            x: '-45%',
-            y: '0%',
-            duration: 1,
-            ease: 'cubic.out'
-        }
-    );
+      {
+          x: '-45%',
+          y: '-20%'
+      },
+      {
+          x: '-20%',
+          y: '0%',
+          duration: 1,
+          ease: 'cubic.out'
+      }
+    )
 
   }, [currentIndex]);
 
@@ -126,7 +93,7 @@ export default function TriOffsetCarousel() {
         isActive={true}
       />
       {cards.map((card) => (
-        <div id={`card${card.id}`} key={card.id} className="w-[400px] h-[420px] border">{card.id}</div>
+        <SpecialOfferCard key={card.id} card={card} />
       ))}
 
       <CarouselArrow

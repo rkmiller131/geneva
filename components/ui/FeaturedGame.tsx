@@ -1,19 +1,12 @@
 "use client";
 
+import { IGame } from "@/app/lib/types/store.types";
 import GameTag from "../text-content/GameTag";
+import AutoPlayVideo from "./AutoPlayVideo";
 import PriceTag from "./PriceTag";
 
 interface FeaturedGameProps {
-  game: {
-    id: number;
-    title: string;
-    bannerUrl: string;
-    videoUrl: string;
-    tags: string[];
-    originalPrice: number;
-    salePercentage?: number;
-    isOnSale: boolean
-  }
+  game: IGame
 }
 
 // @TODO a lot of logic for tags/recommended left unsaid
@@ -31,7 +24,7 @@ export default function FeaturedGame({ game }: FeaturedGameProps) {
       >
         <div
           className="absolute inset-0 transition-transform duration-300 ease-in-out hover:scale-105 bg-cover bg-center"
-          style={{ backgroundImage: `url(${game.bannerUrl})` }}
+          style={{ backgroundImage: `url(${game.bannerUrl})` }} // Have to use style tag for dynamically loaded images
         />
       </div>
 
@@ -40,19 +33,7 @@ export default function FeaturedGame({ game }: FeaturedGameProps) {
         <span className="font-header text-lg">
           {game.title}
         </span>
-        <div className="w-[100%]">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="h-full w-full object-cover"
-          >
-            <source src={game.videoUrl} type="video/webm" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <AutoPlayVideo videoUrl={game.videoUrl} type="video/webm" />
         <p>
           <span className="font-body text-accent">Recommended </span>
           because you played games tagged with:
@@ -65,7 +46,7 @@ export default function FeaturedGame({ game }: FeaturedGameProps) {
         </div>
 
         <div className="self-end mt-[-16px]">
-          <PriceTag vanilla={true} isOnSale={game.isOnSale} originalPrice={game.originalPrice} salePercentage={game.salePercentage} onClick={goToGameDetailsPage}/>
+          <PriceTag vanilla={true} isOnSale={game.isOnSale} basePrice={game.basePrice} salePercentage={game.salePercentage} onClick={goToGameDetailsPage}/>
         </div>
       </div>
 

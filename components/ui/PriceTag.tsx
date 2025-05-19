@@ -2,14 +2,15 @@ import GoToButton from "./GoToButton";
 
 interface PriceTagProps {
   isOnSale: boolean;
-  originalPrice: number;
+  basePrice: number;
   salePercentage?: number;
-  onClick: () => void;
+  displayGoTo?: boolean;
+  onClick?: () => void;
   vanilla?: boolean;
 }
 
-export default function PriceTag({ isOnSale, originalPrice, salePercentage, onClick, vanilla }: PriceTagProps) {
-  const salePrice = salePercentage ? ((100 - salePercentage) / 100 * originalPrice).toFixed(2) : 0;
+export default function PriceTag({ isOnSale, basePrice, salePercentage, onClick, vanilla, displayGoTo = true }: PriceTagProps) {
+  const salePrice = salePercentage ? ((100 - salePercentage) / 100 * basePrice).toFixed(2) : 0;
 
   if (vanilla) {
     return (
@@ -17,7 +18,7 @@ export default function PriceTag({ isOnSale, originalPrice, salePercentage, onCl
         {isOnSale && salePrice ? (
             <div className="flex  gap-2 items-center">
               <span className="relative text-sm text-gray-300">
-                <span className="inline-block">{`$${originalPrice}`}</span>
+                <span className="inline-block">{`$${basePrice}`}</span>
                 <span className="absolute left-0 top-1/2 w-full h-0.5 bg-accent transform -rotate-12 origin-center"></span>
               </span>
               <span className="text-md">
@@ -26,7 +27,7 @@ export default function PriceTag({ isOnSale, originalPrice, salePercentage, onCl
             </div>
           ) : (
             <div className="text-md">
-              {`$${originalPrice}`}
+              {`$${basePrice}`}
             </div>
           )
         }
@@ -45,7 +46,7 @@ export default function PriceTag({ isOnSale, originalPrice, salePercentage, onCl
       {isOnSale && salePrice ? (
           <div className="flex flex-col items-center px-4">
             <span className="relative text-xs text-gray-300">
-              <span className="inline-block">{`$${originalPrice}`}</span>
+              <span className="inline-block">{`$${basePrice}`}</span>
               <span className="absolute left-0 top-1/2 w-full h-0.5 bg-accent transform -rotate-12 origin-center"></span>
             </span>
             <span className="text-sm">
@@ -54,11 +55,13 @@ export default function PriceTag({ isOnSale, originalPrice, salePercentage, onCl
           </div>
         ) : (
           <div className="px-4 py-3 text-sm">
-            {`$${originalPrice}`}
+            {`$${basePrice}`}
           </div>
         )
       }
-      <GoToButton onClick={onClick} />
+      {displayGoTo && onClick && (
+        <GoToButton onClick={onClick} />
+      )}
     </div>
   );
 }

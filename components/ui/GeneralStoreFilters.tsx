@@ -1,6 +1,6 @@
 import FilterListSection from "../text-content/FilterListSection";
 
-const sectionOne = ["Sports", "Simulation", "Football", "Action"];
+const sectionOne = ["Sports", "Simulation", "RPG", "Action"];
 const sectionTwo = ["Top Sellers", "New Releases", "Upcoming", "On Sale Now", "Controller Friendly"];
 const sectionThree = ["Early Access", "Action", "Adventure", "Casual", "Indie", "Massively Multiplayer", "Racing", "RPG", "Simulation", "Sports", "Strategy"];
 

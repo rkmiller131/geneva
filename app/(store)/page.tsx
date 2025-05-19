@@ -4,8 +4,12 @@ import GeneralStoreFilters from "@/components/ui/GeneralStoreFilters";
 import GlobalSearchbar from "@/components/ui/GlobalSearchbar";
 import TriOffsetCarousel from "@/components/ui/TriOffsetCarousel";
 import Image from "next/image";
+import { IGame } from "../lib/types/store.types";
+import games from "../lib/mock-db/storeGames.json";
 
 export default function Store() {
+  const featuredGames: Array<IGame> = games.slice(0, 3);
+  const specialOffers: Array<IGame> = games.filter((game) => game.isOnSale === true);
 
   return (
     <div className="flex flex-col gap-4">
@@ -50,42 +54,16 @@ export default function Store() {
             <span>New & Noteworthy</span>
           </div>
           <Carousel>
-            <FeaturedGame
-              game={{
-                id: 1,
-                title: "Cyberpunk 2077",
-                bannerUrl: "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyberpunk2077.jpg?v=1747626449153",
-                videoUrl: "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyberpunk2077.mp4?v=1747627386347",
-                tags: ["ADVENTURE", "RPG", "SHOOTER"],
-                originalPrice: 59.99,
-                salePercentage: 60,
-                isOnSale: true
-              }}
-            />
-            <FeaturedGame
-              game={{
-                id: 2,
-                title: "FIFA26",
-                bannerUrl: "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/fifa-banner2.png?v=1747643507636",
-                videoUrl: "https://cdn.glitch.me/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/banner-trailer.webm?v=1742318229191",
-                tags: ["SPORTS", "SIMULATION"],
-                originalPrice: 59.99,
-                isOnSale: false
-              }}/>
-            <FeaturedGame
-              game={{
-                id: 3,
-                title: "The Witcher 3: Wild Hunt",
-                bannerUrl: "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/witcher3.jpg?v=1747644013655",
-                videoUrl: "https://cdn.glitch.me/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/witcher3.mp4?v=1747644048528",
-                tags: ["ACTION", "RPG", "OPEN WORLD"],
-                originalPrice: 39.99,
-                isOnSale: false
-              }}/>
+            {featuredGames.map((game: IGame) => (
+              <FeaturedGame
+                game={game}
+                key={game.id}
+              />
+            ))}
           </Carousel>
 
-          <div className="w-full mt-32">
-            <TriOffsetCarousel />
+          <div className="w-full mt-48">
+            <TriOffsetCarousel gameList={specialOffers}/>
           </div>
         </div>
 

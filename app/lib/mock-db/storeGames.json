@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "Cyberpunk 2077",
+    "bannerUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyberpunk2077.jpg?v=1747626449153",
+    "videoUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyberpunk2077.mp4?v=1747627386347",
+    "tags": ["ADVENTURE", "RPG", "SHOOTER"],
+    "description": "Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification.",
+    "basePrice": 59.99,
+    "isOnSale": true,
+    "salePercentage": 60,
+    "saleEndDate": 1748131200000,
+    "dateAdded": 1607472000000
+  },
+  {
+    "id": 2,
+    "title": "FIFA®26",
+    "bannerUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/fifa-banner2.png?v=1747643507636",
+    "videoUrl": "https://cdn.glitch.me/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/banner-trailer.webm?v=1742318229191",
+    "tags": ["SPORTS", "SIMULATION"],
+    "description": "Feel the glory of lifting the FIFA World Cup 26 trophy.",
+    "basePrice": 59.99,
+    "isOnSale": false,
+    "salePercentage": 0,
+    "saleEndDate": null,
+    "dateAdded": 1787654400000
+  },
+  {
+    "id": 3,
+    "title": "The Witcher 3: Wild Hunt",
+    "bannerUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/witcher3.jpg?v=1747644013655",
+    "videoUrl": "https://cdn.glitch.me/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/witcher3.mp4?v=1747644048528",
+    "tags": ["ACTION", "RPG", "OPEN WORLD"],
+    "description": "You are Geralt of Rivia, mercenary monster slayer. Before you stands a war-torn, monster-infested continent you can explore at will. Your current contract? Tracking down Ciri — the Child of Prophecy, a living weapon that can alter the shape of the world.",
+    "basePrice": 39.99,
+    "isOnSale": true,
+    "salePercentage": 90,
+    "saleEndDate": 1748131200000,
+    "dateAdded": 1431926400000
+  },
+  {
+    "id": 4,
+    "title": "The Witcher 2: Assassins of Kings Enhanced Edition",
+    "bannerUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/witcher2.jpg?v=1747678945483",
+    "videoUrl": "",
+    "tags": ["RPG", "FANTASY", "STORY RICH", "ADVENTURE"],
+    "description": "A time of untold chaos has come. Mighty forces clash behind the scenes in a struggle for power and influence. The Northern Kingdoms mobilize for war. But armies on the march are not enough to stop a bloody conspiracy...",
+    "basePrice": 19.99,
+    "isOnSale": true,
+    "salePercentage": 85,
+    "saleEndDate": 1748131200000,
+    "dateAdded": 1305615600000
+  },
+  {
+    "id": 5,
+    "title": "Thronebreaker: The Witcher Tales",
+    "bannerUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/thornebreaker.jpg?v=1747682244191",
+    "videoUrl": "",
+    "tags": ["RPG", "ADVENTURE", "CARD GAME", "STORY RICH"],
+    "description": "Discover a brand new RPG from the creators of The Witcher 3: Wild Hunt. Facing an imminent invasion, Meve — war-veteran and Queen of Lyria and Rivia — is forced to once again enter the warpath and set out on a dark journey of destruction and revenge.",
+    "basePrice": 19.99,
+    "isOnSale": true,
+    "salePercentage": 80,
+    "saleEndDate": 1748131200000,
+    "dateAdded": 1541721600000
+  },
+  {
+    "id": 6,
+    "title": "Cyberpunk 2077: Phantom Liberty",
+    "bannerUrl": "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyber.jpg?v=1747682408489",
+    "videoUrl": "",
+    "tags": ["RPG", "OPEN WORLD"],
+    "description": "DLC: This content requires the base game Cyberpunk 2077",
+    "basePrice": 29.99,
+    "isOnSale": true,
+    "salePercentage": 25,
+    "saleEndDate": 1748131200000,
+    "dateAdded": 1695600000000
+  }
+]
