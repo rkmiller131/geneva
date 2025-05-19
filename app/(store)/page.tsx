@@ -1,4 +1,5 @@
-import GeneralStoreFilters from "@/components/GeneralStoreFilters";
+import Carousel from "@/components/ui/Carousel";
+import GeneralStoreFilters from "@/components/ui/GeneralStoreFilters";
 import GlobalSearchbar from "@/components/ui/GlobalSearchbar";
 import Image from "next/image";
 
@@ -41,7 +42,20 @@ export default function Store() {
 
         {/* RIGHT PANEL */}
         <div className="flex flex-col mt-8 grow border border-red-500 items-end">
-          SECOND PANEL
+          <Carousel>
+            <div>
+              Item1
+            </div>
+            <div>
+              Item2
+            </div>
+            <div>
+              Item3
+            </div>
+            <div>
+              Item4
+            </div>
+          </Carousel>
         </div>
 
       </div>

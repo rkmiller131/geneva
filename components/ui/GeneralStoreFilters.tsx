@@ -1,4 +1,4 @@
-import FilterListSection from "./text-content/FilterListSection";
+import FilterListSection from "../text-content/FilterListSection";
 
 const sectionOne = ["Sports", "Simulation", "Football", "Action"];
 const sectionTwo = ["Top Sellers", "New Releases", "Upcoming", "On Sale Now", "Controller Friendly"];
