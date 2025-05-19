@@ -34,7 +34,7 @@ export default function Carousel({
 
   return (
     <div className="w-full flex flex-col">
-      <div className="relative flex gap-4 items-center">
+      <div className="relative flex gap-3 items-center">
         <CarouselArrow
           direction="left"
           onClick={prevSlide}
@@ -65,7 +65,7 @@ export default function Carousel({
       </div>
 
       {/* Pagination */}
-      <div className="mt-4">
+      <div className="mt-4 ml-24">
         <CarouselPagination
           pageCount={itemCount}
           currentPage={currentIndex}

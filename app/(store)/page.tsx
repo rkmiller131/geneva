@@ -1,4 +1,5 @@
 import Carousel from "@/components/ui/Carousel";
+import FeaturedGame from "@/components/ui/FeaturedGame";
 import GeneralStoreFilters from "@/components/ui/GeneralStoreFilters";
 import GlobalSearchbar from "@/components/ui/GlobalSearchbar";
 import Image from "next/image";
@@ -41,20 +42,37 @@ export default function Store() {
         </div>
 
         {/* RIGHT PANEL */}
-        <div className="flex flex-col mt-8 grow border border-red-500 items-end">
+        <div className="flex flex-col mt-8 grow items-end">
+          <div className="cursor-not-allowed flex gap-4 self-start ml-18 mb-4 font-header">
+            <span className="border-b">Featured & Recommended</span>
+            <span>New & Noteworthy</span>
+          </div>
           <Carousel>
-            <div>
-              Item1
-            </div>
-            <div>
-              Item2
-            </div>
-            <div>
-              Item3
-            </div>
-            <div>
-              Item4
-            </div>
+            <FeaturedGame
+              game={{
+                id: 1,
+                title: "Cyberpunk 2077",
+                bannerUrl: "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyberpunk2077.jpg?v=1747626449153",
+                videoUrl: "https://cdn.glitch.global/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/cyberpunk2077.mp4?v=1747627386347",
+                tags: ["ADVENTURE", "RPG", "SHOOTER"]
+              }}
+            />
+            <FeaturedGame
+              game={{
+                id: 2,
+                title: "FIFA26",
+                bannerUrl: "",
+                videoUrl: "https://cdn.glitch.me/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/banner-trailer.webm?v=1742318229191",
+                tags: ["SPORTS", "SIMULATION"]
+              }}/>
+            <FeaturedGame
+              game={{
+                id: 2,
+                title: "FIFA26",
+                bannerUrl: "",
+                videoUrl: "https://cdn.glitch.me/c4f540ac-7f7c-41b2-ae89-9e2617351aa6/banner-trailer.webm?v=1742318229191",
+                tags: ["SPORTS", "SIMULATION"]
+              }}/>
           </Carousel>
         </div>
 
