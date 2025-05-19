@@ -9,7 +9,7 @@ import games from "../lib/mock-db/storeGames.json";
 
 export default function Store() {
   const featuredGames: Array<IGame> = games.slice(0, 3);
-  const specialOffers: Array<IGame> = games.filter((game) => game.isOnSale === true);
+  const specialOffers: Array<IGame> = games.filter((game) => game.isOnSale === true).reverse();
 
   return (
     <div className="flex flex-col gap-4">

@@ -5,6 +5,8 @@ import { gsap } from 'gsap';
 import CarouselArrow from "./CarouselArrow";
 import SpecialOfferCard from "./SpecialOfferCard";
 import { IGame } from "@/app/lib/types/store.types";
+import CarouselPagination from "./CarouselPagination";
+import CalloutButton from "./CalloutButton";
 
 interface TriOffsetCarouselProps {
   gameList: IGame[];
@@ -83,24 +85,34 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
       }
     )
 
-  }, [currentIndex]);
+  }, [currentIndex, gameList]);
 
   return (
-    <div className="flex items-center justify-between">
-      <CarouselArrow
-        direction="left"
-        onClick={prevCard}
-        isActive={true}
-      />
-      {cards.map((card) => (
-        <SpecialOfferCard key={card.id} card={card} />
-      ))}
+    <div className="w-full flex flex-col">
+      <div className="flex items-center justify-between">
+        <CarouselArrow
+          direction="left"
+          onClick={prevCard}
+          isActive={true}
+        />
+        {cards.map((card, i) => (
+          <SpecialOfferCard key={card.id} card={card} cardIndex={i} currentIndex={currentIndex}/>
+        ))}
 
-      <CarouselArrow
-        direction="right"
-        onClick={nextCard}
-        isActive={true}
-      />
+        <CarouselArrow
+          direction="right"
+          onClick={nextCard}
+          isActive={true}
+        />
+      </div>
+      {/* Pagination */}
+      <div className="w-full flex items-center justify-between pl-24 mt-[30px]">
+        <CarouselPagination
+          pageCount={gameList.length}
+          currentPage={currentIndex}
+        />
+        <CalloutButton text="See all special offers ->"/>
+      </div>
     </div>
   );
 }
