@@ -65,7 +65,7 @@ export default function Carousel({
       </div>
 
       {/* Pagination */}
-      <div className="mt-4 ml-24">
+      <div className="ml-24 mt-[-35px]">
         <CarouselPagination
           pageCount={itemCount}
           currentPage={currentIndex}

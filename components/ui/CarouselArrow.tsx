@@ -22,21 +22,23 @@ export default function CarouselArrow({ direction, onClick, isActive }: Carousel
       onClick={onClick}
     >
       {direction === "left" ? (
-        <div className="cursor-pointer bg-[#003180] hover:bg-[#01245E] px-1 py-6 rounded-xl border border-[0.3px] border-gray-300 shadow-[inset_-10px_10px_10px_rgba(0,0,0,0.3)]">
+        <div className="cursor-pointer bg-[#003180] hover:bg-[#01245E] px-1 py-6 rounded-lg border border-[0.3px] border-gray-300 shadow-[inset_-10px_10px_10px_rgba(0,0,0,0.3)]">
           <Image
             src="/icons/left-caret.png"
             alt="slide left"
             width={50}
             height={50}
+            className="w-[30px] h-auto"
           />
         </div>
       ) : (
-        <div className="cursor-pointer bg-[#003180] hover:bg-[#01245E] px-1 py-6 rounded-xl border border-[0.3px] border-gray-300 shadow-[inset_-10px_10px_10px_rgba(0,0,0,0.3)]">
+        <div className="cursor-pointer bg-[#003180] hover:bg-[#01245E] px-1 py-6 rounded-lg border border-[0.3px] border-gray-300 shadow-[inset_10px_10px_10px_rgba(0,0,0,0.3)]">
           <Image
             src="/icons/right-caret.png"
             alt="slide right"
             width={50}
             height={50}
+            className="w-[30px] h-auto"
           />
         </div>
       )
