@@ -65,6 +65,8 @@ export default function Store() {
           <div className="w-full mt-48">
             <TriOffsetCarousel gameList={specialOffers}/>
           </div>
+
+
         </div>
 
       </div>

@@ -18,92 +18,106 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
 
   // Navigate to next card
   const nextCard = () => {
-    const prevIndex = (currentIndex + 1) % gameList.length;
-    setCurrentIndex(prevIndex);
+    const nextIndex = currentIndex + 1;
+    if (nextIndex > gameList.length -1) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
   };
 
   // Navigate to previous card
   const prevCard = () => {
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : currentIndex;
-    setCurrentIndex(prevIndex);
+    if (currentIndex === 0){
+      setCurrentIndex(gameList.length-1);
+    } else {
+      setCurrentIndex(currentIndex - 1);
+    }
+
   };
 
   useEffect(() => {
-    const newIndex = (currentIndex + 1) % gameList.length;
-    const lastIndex = newIndex + 1 === gameList.length ? 0 : newIndex + 1 === gameList.length + 1 ? newIndex : newIndex + 1;
-    const firstIndex = newIndex - 1 >= 0 ? newIndex - 1 : gameList.length - 1;
+    const centerCard = gameList[currentIndex] // always same
+    let leftCard = gameList[currentIndex + 1]; //can change
+    let rightCard = gameList[currentIndex + 2] // can Change
+    // 3 -> length is 5
+    if (currentIndex === gameList.length - 2){
+       rightCard = gameList[0]
+    }
+    // 1 before end
+    if (currentIndex === gameList.length -1){
+      leftCard = gameList[0]
+      rightCard = gameList[1]
+    }
+    // end
+    if (currentIndex === gameList.length){
+      leftCard = gameList[0];
+      rightCard = gameList[1]
+    }
 
-    const newCards = [gameList[firstIndex], gameList[newIndex], gameList[lastIndex]];
-    setCards(newCards);
+    const newCards = [centerCard, leftCard, rightCard];
+    setCards(newCards)
 
     gsap.fromTo(`#card${newCards[0].id}`,
-        {
-            x: '45%',
-            y: '0%'
-        },
-        {
-            x: '100%',
-            y: '-20%',
-            duration: 1,
-            ease: 'cubic.out'
-        }
+      {
+          x: '0%',
+          y: '0%'
+      },
+      {
+          x: '100%',
+          y: '-20%',
+          duration: 1,
+          ease: 'cubic.out'
+      }
     )
     gsap.fromTo(`#card${newCards[1].id}`,
         {
-            x: '85%',
+            x: '0%',
             y: '0%'
         },
         {
-            x: '-85%',
+            x: '-80%',
             y: '0%',
             duration: 1,
             ease: 'cubic.out'
         }
     )
-    // gsap.fromTo(`#card${newCards[2].id}`,
-    //     {
-    //         x: '-100%',
-    //         y: '0%'
-    //     },
-    //     {
-    //         x: '-20%',
-    //         y: '0%',
-    //         duration: 1,
-    //         ease: 'cubic.out'
-    //     }
-    // );
     gsap.fromTo(`#card${newCards[2].id}`,
-      {
-          x: '-45%',
-          y: '-20%'
-      },
-      {
-          x: '-20%',
-          y: '0%',
-          duration: 1,
-          ease: 'cubic.out'
-      }
-    )
+        {
+            x: '-150%',
+            y: '-20%'
+        },
+        {
+            x: '-20%',
+            y: '0%',
+            duration: 1,
+            ease: 'cubic.out'
+        }
+    );
 
   }, [currentIndex, gameList]);
 
   return (
     <div className="w-full flex flex-col">
-      <div className="flex items-center justify-between">
-        <CarouselArrow
-          direction="left"
-          onClick={prevCard}
-          isActive={true}
-        />
+      <div className="relative flex items-center justify-between">
+        <div className="absolute">
+          <CarouselArrow
+            direction="left"
+            onClick={prevCard}
+            isActive={true}
+          />
+        </div>
         {cards.map((card, i) => (
-          <SpecialOfferCard key={card.id} card={card} cardIndex={i} currentIndex={currentIndex}/>
+          <SpecialOfferCard key={card.id} card={card} cardIndex={i} />
         ))}
 
-        <CarouselArrow
-          direction="right"
-          onClick={nextCard}
-          isActive={true}
-        />
+        <div className="absolute right-0">
+          <CarouselArrow
+            direction="right"
+            onClick={nextCard}
+            isActive={true}
+          />
+        </div>
       </div>
       {/* Pagination */}
       <div className="w-full flex items-center justify-between pl-24 mt-[30px]">
