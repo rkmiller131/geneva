@@ -8,7 +8,7 @@ export default function GoToButton({ onClick }: GoToButtonProps) {
 
   return (
     <button
-      className="group cursor-pointer border border-[0.3px] border-accent p-1 hover:border-gray-300 transition-border duration-200"
+      className="group cursor-pointer border border-accent p-1 hover:border-gray-300 transition-border duration-200"
       onClick={onClick}
     >
       <svg

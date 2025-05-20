@@ -69,7 +69,7 @@ export default function PaginatedGameList ({ gameList }: PaginatedGameListProps)
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="relative flex bg-charcoal py-6 rounded-lg border border-[0.3px] border-gray-300">
+      <div className="relative flex bg-charcoal py-6 rounded-lg border border-gray-400">
         <TopFilterTabs
           tabs={[
             {

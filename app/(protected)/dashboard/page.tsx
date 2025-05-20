@@ -1,3 +1,5 @@
 export default function Dashboard() {
-  return null;
+  return (
+    <div>OVERVIEW SECTION</div>
+  );
 }

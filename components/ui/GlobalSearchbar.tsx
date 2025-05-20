@@ -13,7 +13,7 @@ export default function GlobalSearchbar() {
   // @TODO Make search bar functional and maybe not italic when typing
   return (
     <div className="flex justify-end w-full">
-      <div className="flex gap-2 w-[25%] rounded-full py-2 px-4 border border-[0.3px] border-gray-300 bg-[rgba(11,65,166,0.9)]">
+      <div className="flex gap-2 w-[25%] rounded-full py-2 px-4 border border-gray-400 bg-[rgba(11,65,166,0.9)]">
         <Image
           src="/icons/search.png"
           alt="search icon"

@@ -19,3 +19,10 @@ export interface IFilterTab {
   onClick: () => void;
   icon?: ReactNode
 }
+
+export interface IItem {
+  id: string;
+  text: string;
+  icon: ReactNode;
+  href: string;
+}

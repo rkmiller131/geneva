@@ -27,7 +27,7 @@ export default function SpecialOfferCard({ card, cardIndex }: SpecialOfferCardPr
     <div
       id={`card${card.id}`}
       style={styles}
-      className="w-[45%] h-[350px] border border-[0.3px] border-gray-300 bg-[rgba(0,83,185,0.5)] rounded-md p-3"
+      className="w-[45%] h-[350px] border border-gray-400 bg-[rgba(0,83,185,0.5)] rounded-md p-3"
     >
       <div className="flex flex-col h-full">
         {/* CARD IMAGE */}

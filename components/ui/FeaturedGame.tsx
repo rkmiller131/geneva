@@ -29,7 +29,7 @@ export default function FeaturedGame({ game }: FeaturedGameProps) {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="relative mt-8 flex flex-col w-[45%] border border-[0.3px] border-gray-300 p-4 gap-3 bg-[rgba(0,83,185,0.5)] rounded-md">
+      <div className="relative mt-8 flex flex-col w-[45%] border border-gray-400 p-4 gap-3 bg-[rgba(0,83,185,0.5)] rounded-md">
         <span className="font-header text-lg">
           {game.title}
         </span>

@@ -12,13 +12,19 @@ const userRole = "publisher";
 export default function Navbar() {
   const currentRoute = usePathname();
 
-const navLinks = [
-  { href: "/", label: "STORE" },
-  { href: "/library", label: "LIBRARY" },
-  ...(isAuthenticated && userRole === "publisher"
-    ? [{ href: "/dashboard", label: "DASHBOARD" }]
-    : []),
-];
+  const navLinks = [
+    { href: "/", label: "STORE" },
+    { href: "/library", label: "LIBRARY" },
+    ...(isAuthenticated && userRole === "publisher"
+      ? [{ href: "/dashboard", label: "DASHBOARD" }]
+      : []),
+  ];
+
+  const isActiveRoute = (href: string) => {
+    if (href === "/" && currentRoute === "/") return true;
+    if (href === "/library" && currentRoute.startsWith("/library")) return true;
+    if (href === "/dashboard" && currentRoute.startsWith("/dashboard")) return true;
+  }
 
   return (
     <header className="shadow-md bg-[rgba(64,129,196,0.65)] rounded-full">
@@ -32,7 +38,7 @@ const navLinks = [
                 key={href}
                 href={href}
                 className={`text-lg font-ember px-4 py-1 rounded-sm ${
-                  currentRoute === href ? 'gradient-sky drop-shadow-[-2px_2px_2px_rgba(0,49,128,0.5)]' : 'hover:text-[var(--color-accent)]'
+                  isActiveRoute(href) ? 'gradient-sky drop-shadow-[-2px_2px_2px_rgba(0,49,128,0.5)]' : 'hover:text-[var(--color-accent)]'
                 }`}
               >
                 {label}
