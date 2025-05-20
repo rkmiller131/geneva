@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function CloudBackground() {
+  const path = usePathname();
+
   return (
-    <div className="absolute w-full min-h-[145vh] z-[-1]">
+    <div className={`absolute w-full min-h-[145vh] ${path !== "/" && "overflow-hidden"} z-[-1]`}>
       <div className="absolute top-[-525px] left-[-570px] rotate-[137deg]">
         <Image
           src="/images/cloud-minor.webp"

@@ -60,9 +60,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scrollbar-hidden">
+    <html lang="en" className="scrollbar-hidden h-full">
       <body
-        className={`${sansation.variable} ${ember.variable} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased`}
+        className={`${sansation.variable} ${ember.variable} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased min-h-screen overflow-x-hidden`}
       >
         {/* Repeating middle background cloud texture */}
         <div className="bg-[url(/images/cloud-texture.webp)] bg-center bg-cover bg-repeat-y">

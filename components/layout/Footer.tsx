@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 dark:border-dark-border-subtle bg-black dark:bg-dark-base">
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16 xl:px-30 py-8">
+    <footer className="mt-18 border-t border-gray-200 bg-charcoal">
+      <div className="container mx-auto px-12 sm:px-18 lg:px-22 xl:px-40 py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
-            <h3 className="text-lg font-semibold mb-4">GENEVA</h3>
+            <h3 className="text-lg font-logo mb-4">GENEVA</h3>
             <p className="text-sm text-gray-600">
-              A modern cloud gaming platform with no subscriptions.
+              A modern cloud gaming platform without subscriptions.
             </p>
           </div>
           <div>
@@ -17,7 +17,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-sm text-gray-600 hover:text-purple-600"
+                  className="text-sm text-gray-600 hover:text-accent"
                 >
                   Store
                 </Link>
@@ -25,7 +25,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/library"
-                  className="text-sm text-gray-600 hover:text-purple-600"
+                  className="text-sm text-gray-600 hover:text-accent"
                 >
                   Your Library
                 </Link>
@@ -33,7 +33,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/dashboard"
-                  className="text-sm text-gray-600 hover:text-purple-600"
+                  className="text-sm text-gray-600 hover:text-accent"
                 >
                   Publisher Dashboard
                 </Link>
@@ -44,22 +44,18 @@ export default function Footer() {
             <h3 className="text-sm font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/docs"
-                  className="text-sm text-gray-600 hover:text-purple-600"
+                <div
+                  className="cursor-not-allowed text-sm text-gray-600 hover:text-accent"
                 >
                   Documentation
-                </Link>
+                </div>
               </li>
               <li>
-                <a
-                  href="https://github.com/yourusername/mode"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-600 hover:text-purple-600"
+                <div
+                  className="cursor-not-allowed text-sm text-gray-600 hover:text-accent"
                 >
                   GitHub
-                </a>
+                </div>
               </li>
             </ul>
           </div>
@@ -67,12 +63,11 @@ export default function Footer() {
             <h3 className="text-sm font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/terms"
-                  className="text-sm text-gray-600 hover:text-purple-600"
+                <div
+                  className="cursor-not-allowed text-sm text-gray-600 hover:text-accent"
                 >
                   Terms of Service
-                </Link>
+                </div>
               </li>
             </ul>
           </div>
