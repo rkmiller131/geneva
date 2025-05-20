@@ -7,7 +7,10 @@ import CalloutButton from "./CalloutButton";
 import StarIcon from "../icons/StarIcon";
 import { useState } from "react";
 import SaleIcon from "../icons/SaleIcon";
+import GameListItem from "./GameListItem";
+import { IGame } from "@/app/lib/types/store.types";
 
+// @TODO these should really be props passed down from the parent
 const filters = [
   {
     id: 7824632874368,
@@ -47,7 +50,11 @@ const filters = [
   }
 ]
 
-export default function PaginatedGameList () {
+interface PaginatedGameListProps {
+  gameList: IGame[]
+}
+
+export default function PaginatedGameList ({ gameList }: PaginatedGameListProps) {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const handleAZFilter = () => {
@@ -97,7 +104,7 @@ export default function PaginatedGameList () {
             />
           )}
         </div>
-        <div className="w-full overflow-x-hidden overflow-y-clip">
+        <div className="relative w-full overflow-x-hidden overflow-y-clip h-[745px]">
           <Image
             src="/images/cloud-major.webp"
             alt="large cloud texture"
@@ -105,6 +112,11 @@ export default function PaginatedGameList () {
             height={1080}
             className="scale-130 rotate-[27deg] mt-[25px]"
           />
+          <div className="absolute w-full top-0 z-5 flex flex-col gap-2">
+            {gameList.map((game) => (
+              <GameListItem game={game} key={game.id}/>
+            ))}
+          </div>
         </div>
       </div>
       <div className="self-end">
