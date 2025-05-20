@@ -64,22 +64,24 @@ export default function RootLayout({
       <body
         className={`${sansation.variable} ${ember.variable} ${martelSans.variable} ${libreFranklin.variable} libre-franklin-text antialiased`}
       >
-        <CloudBackground />
-        <NavigationProvider>
-          {/* Repeating middle background texture and container gutters wrap app (except footer) */}
-          <div className={`flex flex-col
-              min-h-screen mx-auto w-full max-w-[1464px]
-              px-4 sm:px-6 lg:px-8 xl:px-12 py-8
-              bg-[url(/images/cloud-texture.webp)] bg-center bg-cover bg-repeat-y
-            `}>
-            <Navbar />
-            {/* Main content also has a container gutter shorter than navbar */}
-            <main className="w-full max-w-[1315px] px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
-              {children}
-            </main>
-          </div>
-          <Footer />
-        </NavigationProvider>
+        {/* Repeating middle background cloud texture */}
+        <div className="bg-[url(/images/cloud-texture.webp)] bg-center bg-cover bg-repeat-y">
+          <CloudBackground />
+          <NavigationProvider>
+            {/* Container gutters wrap app (except footer) */}
+            <div className={`flex flex-col
+                min-h-screen mx-auto w-full max-w-[1464px]
+                px-4 sm:px-6 lg:px-8 xl:px-12 py-8
+              `}>
+              <Navbar />
+              {/* Main content also has a container gutter shorter than navbar */}
+              <main className="w-full max-w-[1315px] px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
+                {children}
+              </main>
+            </div>
+            <Footer />
+          </NavigationProvider>
+        </div>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IGame {
   id: number;
   title: string;
@@ -10,4 +12,10 @@ export interface IGame {
   salePercentage: number;
   saleEndDate: number | null;
   dateAdded: number;
+}
+
+export interface IFilterTab {
+  text?: string;
+  onClick: () => void;
+  icon?: ReactNode
 }

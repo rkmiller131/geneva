@@ -7,11 +7,11 @@ interface FilterListSectionProps {
 export default function FilterListSection({ header, items, isUnderlined = false }: FilterListSectionProps) {
   return (
     <div className="flex flex-col gap-2 w-max">
-      <span className={`font-header text-lg text-accent ${isUnderlined && "px-4"}`}>
+      <span className={`font-header text-lg text-accent ${isUnderlined && "px-4 text-md"}`}>
         {header}
       </span>
 
-      <div className="font-body flex flex-col gap-1 text-primary">
+      <div className={`font-body flex flex-col gap-1 text-primary ${isUnderlined && "text-sm"}`}>
         {items.map((item, i) => {
           return (
             <span
