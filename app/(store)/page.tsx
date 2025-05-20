@@ -6,6 +6,7 @@ import TriOffsetCarousel from "@/components/ui/TriOffsetCarousel";
 import Image from "next/image";
 import { IGame } from "../lib/types/store.types";
 import games from "../lib/mock-db/storeGames.json";
+import PaginatedGameList from "@/components/ui/PaginatedGameList";
 
 export default function Store() {
   const featuredGames: Array<IGame> = games.slice(0, 3);
@@ -66,9 +67,10 @@ export default function Store() {
             <TriOffsetCarousel gameList={specialOffers}/>
           </div>
 
-
+          <div className="w-full mt-32">
+            <PaginatedGameList />
+          </div>
         </div>
-
       </div>
     </div>
   );
