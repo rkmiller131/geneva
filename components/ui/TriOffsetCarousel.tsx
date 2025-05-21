@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { gsap } from 'gsap';
 import CarouselArrow from "./CarouselArrow";
 import SpecialOfferCard from "./SpecialOfferCard";
 import { IGame } from "@/app/lib/types/store.types";
@@ -14,26 +13,145 @@ interface TriOffsetCarouselProps {
 
 export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0); // the center card
+  const [isAnimating, setIsAnimating] = useState(false);
   const [cards, setCards] = useState(gameList.slice(0, 3));
 
-  // Navigate to next card
-  const nextCard = () => {
-    const nextIndex = currentIndex + 1;
-    if (nextIndex > gameList.length -1) {
-      setCurrentIndex(0);
-    } else {
-      setCurrentIndex(currentIndex + 1);
+  // Set initial positions when component mounts
+  useEffect(() => {
+    // Position the cards initially (without animation)
+    positionCards(false);
+  }, [currentIndex]);
+
+  // Function to set card positions via direct DOM manipulation
+  const positionCards = (animate = false) => {
+    // Center card (elevated pyramid top)
+    const centerCard = document.getElementById(`card${cards[0].id}`);
+    if (centerCard) {
+      centerCard.style.zIndex = "10";
+
+      if (animate) {
+        centerCard.style.transition = "transform 500ms ease";
+      } else {
+        centerCard.style.transition = "none";
+      }
+
+      centerCard.style.transform = "translateX(0%) translateY(-20%)";
+    }
+
+    // Left card
+    const leftCard = document.getElementById(`card${cards[1].id}`);
+    if (leftCard) {
+      leftCard.style.zIndex = "5";
+
+      if (animate) {
+        leftCard.style.transition = "transform 500ms ease";
+      } else {
+        leftCard.style.transition = "none";
+      }
+
+      leftCard.style.transform = "translateX(-80%) translateY(0%)";
+    }
+
+    // Right card
+    const rightCard = document.getElementById(`card${cards[2].id}`);
+    if (rightCard) {
+      rightCard.style.zIndex = "5";
+
+      if (animate) {
+        rightCard.style.transition = "transform 500ms ease";
+      } else {
+        rightCard.style.transition = "none";
+      }
+
+      rightCard.style.transform = "translateX(100%) translateY(0%)";
     }
   };
 
-  // Navigate to previous card
-  const prevCard = () => {
-    if (currentIndex === 0){
-      setCurrentIndex(gameList.length-1);
-    } else {
-      setCurrentIndex(currentIndex - 1);
-    }
+  // Navigate to next card (right button)
+  const nextCard = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
 
+    // Get the cards
+    const centerCard = document.getElementById(`card${cards[0].id}`);
+    const leftCard = document.getElementById(`card${cards[1].id}`);
+    const rightCard = document.getElementById(`card${cards[2].id}`);
+
+    // Animate with transitions
+    if (centerCard && leftCard && rightCard) {
+      // Add transitions
+      centerCard.style.transition = "transform 500ms ease";
+      leftCard.style.transition = "transform 500ms ease";
+      rightCard.style.transition = "transform 500ms ease";
+
+      // Update z-index
+      centerCard.style.zIndex = "5";
+      leftCard.style.zIndex = "10";
+      rightCard.style.zIndex = "5";
+
+      // Move center card to right
+      centerCard.style.transform = "translateX(175%) translateY(0%)";
+
+      // Move left card to center (and up)
+      leftCard.style.transform = "translateX(0%) translateY(-20%)";
+
+      // Move right card to left
+      rightCard.style.transform = "translateX(-175%) translateY(0%)";
+
+      // Update the state after animation completes
+      setTimeout(() => {
+        const nextIndex = currentIndex + 1;
+        if (nextIndex > gameList.length -1) {
+          setCurrentIndex(0);
+        } else {
+          setCurrentIndex(currentIndex + 1);
+        }
+        setIsAnimating(false);
+      }, 500);
+    }
+  };
+
+  // Navigate to previous card (left button)
+  const prevCard = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+
+    // Get the cards
+    const centerCard = document.getElementById(`card${cards[0].id}`);
+    const leftCard = document.getElementById(`card${cards[1].id}`);
+    const rightCard = document.getElementById(`card${cards[2].id}`);
+
+    // Animate with transitions
+    if (centerCard && leftCard && rightCard) {
+      // Add transitions
+      centerCard.style.transition = "transform 500ms ease";
+      leftCard.style.transition = "transform 500ms ease";
+      rightCard.style.transition = "transform 500ms ease";
+
+      // Update z-index
+      centerCard.style.zIndex = "5";
+      leftCard.style.zIndex = "5";
+      rightCard.style.zIndex = "10";
+
+      // Move center card to left
+      centerCard.style.transform = "translateX(20%) translateY(0%)";
+
+      // Move left card to right
+      leftCard.style.transform = "translateX(80%) translateY(0%)";
+
+      // Move right card to center (and up)
+      rightCard.style.transform = "translateX(-100%) translateY(-20%)";
+
+      // Update the state after animation completes
+      setTimeout(() => {
+        if (currentIndex === 0){
+          setCurrentIndex(gameList.length-1);
+        } else {
+          setCurrentIndex(currentIndex - 1);
+        }
+        setIsAnimating(false);
+      }, 500);
+    }
   };
 
   useEffect(() => {
@@ -58,74 +176,51 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
     const newCards = [centerCard, leftCard, rightCard];
     setCards(newCards)
 
-    gsap.fromTo(`#card${newCards[0].id}`,
-      {
-          x: '0%',
-          y: '0%'
-      },
-      {
-          x: '100%',
-          y: '-20%',
-          duration: 1,
-          ease: 'cubic.out'
-      }
-    )
-    gsap.fromTo(`#card${newCards[1].id}`,
-        {
-            x: '0%',
-            y: '0%'
-        },
-        {
-            x: '-80%',
-            y: '0%',
-            duration: 1,
-            ease: 'cubic.out'
-        }
-    )
-    gsap.fromTo(`#card${newCards[2].id}`,
-        {
-            x: '-150%',
-            y: '-20%'
-        },
-        {
-            x: '-20%',
-            y: '0%',
-            duration: 1,
-            ease: 'cubic.out'
-        }
-    );
-
   }, [currentIndex, gameList]);
 
   return (
     <div className="w-full flex flex-col">
-      <div className="relative flex items-center justify-between">
-        <div className="absolute">
+      <div className="relative flex items-center justify-center">
+        <div className="absolute left-0 z-20">
           <CarouselArrow
             direction="left"
             onClick={prevCard}
-            isActive={true}
+            isActive={!isAnimating}
           />
         </div>
         {cards.map((card, i) => (
-          <SpecialOfferCard key={card.id} card={card} cardIndex={i} />
+          <SpecialOfferCard
+            card={card}
+            styles={{
+              // Initial styling - actual positioning is done in useEffect via DOM manipulation
+              transition: "none",
+              transform: i === 0 ? "translateX(100%) translateY(-20%)" :
+                          i === 1 ? "translateX(-80%) translateY(0%)" :
+                                  "translateX(-20%) translateY(0%)",
+              filter: i === 0 ? "" : "blur(3px)",
+              opacity: i === 0 ? 1 : 0.85,
+              zIndex: i ===0 ? 10 : 5
+            }}
+            key={card.id}
+          />
         ))}
 
-        <div className="absolute right-0">
+        <div className="absolute right-0 z-20">
           <CarouselArrow
             direction="right"
             onClick={nextCard}
-            isActive={true}
+            isActive={!isAnimating}
           />
         </div>
       </div>
+
       {/* Pagination */}
       <div className="w-full flex items-center justify-between pl-24 mt-[30px]">
         <CarouselPagination
           pageCount={gameList.length}
           currentPage={currentIndex}
         />
-        <CalloutButton text="See all special offers ->"/>
+        <CalloutButton text="See all special offers" />
       </div>
     </div>
   );

@@ -3,26 +3,20 @@
 import { IGame } from "@/app/lib/types/store.types";
 import GoToButton from "./GoToButton";
 import PriceTag from "./PriceTag";
+import { CSSProperties } from "react";
 
 interface SpecialOfferCardProps {
   card: IGame;
-  cardIndex: number;
+  styles: CSSProperties;
 }
 
-// Selected/highlighted card will be at index 0 (first one in the list)
-export default function SpecialOfferCard({ card, cardIndex }: SpecialOfferCardProps) {
+export default function SpecialOfferCard({ card, styles }: SpecialOfferCardProps) {
   const saleEndDate = new Date(Number(card.saleEndDate));
   const saleEndMonth = saleEndDate.getMonth();
   const saleEndDay = saleEndDate.getDate();
   const saleEnd = `${saleEndMonth + 1}/${saleEndDay}`;
 
-  const styles = {
-    filter: cardIndex === 0 ? "" : "blur(3px)",
-    opacity: cardIndex === 0 ? 1 : 0.85,
-    zIndex: cardIndex ===0 ? 1 : 0
-  }
-
-  // id property is used in gsap to target animations
+  // id property is used in to target animations
   return (
     <div
       id={`card${card.id}`}
