@@ -4,7 +4,7 @@ import { IGame } from "@/app/lib/types/store.types";
 import GameTag from "../text-content/GameTag";
 import AutoPlayVideo from "./AutoPlayVideo";
 import PriceTag from "./PriceTag";
-// import { startGame } from "@/app/actions";
+import { startGame } from "@/app/actions";
 
 interface FeaturedGameProps {
   game: IGame
@@ -17,9 +17,9 @@ export default function FeaturedGame({ game }: FeaturedGameProps) {
     // use the game id to create a dynamic route for the game details page
     console.log("click to details on ", game.title);
     // but for now just handle the play of cyberpunk only!!
-    // if (game.title === "Cyberpunk 2077") {
-    //   await startGame();
-    // }
+    if (game.title === "Cyberpunk 2077") {
+      await startGame();
+    }
   }
 
   return (

@@ -1,3 +1,5 @@
+"use server";
+
 import { redirect } from "next/navigation";
 import { getGameUrl } from "./lib/gameState";
 

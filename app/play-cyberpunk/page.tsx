@@ -27,21 +27,31 @@ export default function PlayCyberpunk() {
   };
 
   useEffect(() => {
+    // Disable scrolling on the body when component mounts
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
     loadGameUrl();
+
+    // Re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="fixed inset-0 z-50 bg-charcoal">
       <button
-        className="absolute z-20 bg-black/75 p-4 text-white rounded-md"
+        className="fixed top-0 left-0 z-[60] bg-black/75 p-4 text-white rounded-md"
         onClick={handleBack}
       >
         &#8592; <span className="underline">Exit Stream</span>
       </button>
       <iframe
         ref={iframeRef}
-        className="absolute z-10 w-full h-full border-none top-0 left-0"
+        className="fixed inset-0 z-[55] w-screen h-screen border-none"
         title="GENEVA"
         src="about:blank"
         allowFullScreen

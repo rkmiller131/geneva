@@ -8,7 +8,7 @@ interface GameUrlResult {
 export async function getGameUrl(): Promise<GameUrlResult> {
   const url = GAME_URL || "";
   return {
-    success: true,
+    success: url !== "",
     url
   };
 }
