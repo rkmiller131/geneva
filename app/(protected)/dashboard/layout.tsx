@@ -6,9 +6,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen flex bg-charcoal rounded-lg mt-12">
+    <div className="relative min-h-screen flex bg-charcoal rounded-lg mt-12">
       <SlidingNavbar />
-      <div className="p-4">
+      <div className="p-8">
         {children}
       </div>
     </div>

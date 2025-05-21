@@ -10,7 +10,7 @@ export default function TopFilterTabs({ tabs, selectedTab }: TopFilterTabsProps)
     <div className="absolute top-[-43px] right-[10px] flex gap-1">
       {tabs.map((tab, i) => (
         <button
-          className={`p-2 cursor-pointer border-b ${selectedTab === i ? "gradient-sky" : "bg-charcoal"}`}
+          className={`p-2 cursor-pointer border-b border-gray-500 ${selectedTab === i ? "gradient-sky" : "bg-charcoal"}`}
           onClick={tab.onClick}
           key={i}
         >
