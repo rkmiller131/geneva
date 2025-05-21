@@ -50,12 +50,14 @@ export default function RevenueMonetization() {
               alt="Revenue"
               width={329}
               height={205}
+              className="w-[250px] h-auto"
             />
             <Image
               src="/images/Installs.png"
               alt="Installs"
               width={329}
               height={205}
+              className="w-[250px] h-auto"
             />
           </div>
         </div>
