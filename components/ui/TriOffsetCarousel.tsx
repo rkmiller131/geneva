@@ -20,6 +20,7 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
   useEffect(() => {
     // Position the cards initially (without animation)
     positionCards(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   // Function to set card positions via direct DOM manipulation
@@ -35,7 +36,7 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
         centerCard.style.transition = "none";
       }
 
-      centerCard.style.transform = "translateX(0%) translateY(-20%)";
+      centerCard.style.transform = "translateX(100%) translateY(-20%)";
     }
 
     // Left card
@@ -63,7 +64,7 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
         rightCard.style.transition = "none";
       }
 
-      rightCard.style.transform = "translateX(100%) translateY(0%)";
+      rightCard.style.transform = "translateX(-20%) translateY(0%)";
     }
   };
 
@@ -79,6 +80,13 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
 
     // Animate with transitions
     if (centerCard && leftCard && rightCard) {
+      // First, remove active styles from current center card
+      centerCard.style.filter = "blur(3px)";
+      centerCard.style.opacity = "0.85";
+      leftCard.style.filter = "none";
+      leftCard.style.opacity = "1";
+      rightCard.style.filter = "blur(3px)";
+      rightCard.style.opacity = "0.85";
       // Add transitions
       centerCard.style.transition = "transform 500ms ease";
       leftCard.style.transition = "transform 500ms ease";
@@ -123,6 +131,12 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
 
     // Animate with transitions
     if (centerCard && leftCard && rightCard) {
+      centerCard.style.filter = "blur(3px)";
+      centerCard.style.opacity = "0.85";
+      leftCard.style.filter = "blur(3px)";
+      leftCard.style.opacity = "0.85";
+      rightCard.style.filter = "none";
+      rightCard.style.opacity = "1";
       // Add transitions
       centerCard.style.transition = "transform 500ms ease";
       leftCard.style.transition = "transform 500ms ease";
@@ -199,7 +213,7 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
                                   "translateX(-20%) translateY(0%)",
               filter: i === 0 ? "" : "blur(3px)",
               opacity: i === 0 ? 1 : 0.85,
-              zIndex: i ===0 ? 10 : 5
+              zIndex: i === 0 ? 10 : 5
             }}
             key={card.id}
           />
