@@ -6,19 +6,19 @@ import SlidingNavListItem from "../text-content/SlidingNavListItem";
 
 // @TODO really the href should be dynamic for organization too like /dashboard/[organization]/overview
 const navItems = [
-  { id: "Overview", text: "Overview", icon: '📊', href: "/dashboard" },
+  { id: "Overview", text: "Overview", icon: "📋", href: "/dashboard" },
   { id: "Engagement", text: "Engagement", icon: '👤', href: "/dashboard/engagement" },
-  { id: "Revenue & Monetization", text: "Revenue & Monetization", icon: '⚙️', href: "/dashboard/revenue-&-monetization" },
+  { id: "Revenue & Monetization", text: "Revenue & Monetization", icon: '📊', href: "/dashboard/revenue-&-monetization" },
   { id: "Cloud Streaming Metrics", text: "Cloud Streaming Metrics", icon: '📈', href: "/dashboard/streaming-metrics" },
-  { id: "Upload & Publish", text: "Upload & Publish", icon: '💬', href: "/dashboard/upload" }
+  { id: "Upload & Publish", text: "Upload & Publish", icon: '📁', href: "/dashboard/upload" }
 ];
 
 export default function SlidingNavbar () {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className={`flex flex-col gap-12 pl-4 pt-4 transition-[width] duration-300 ease-in-out bg-[#16151C] rounded-l-lg shadow-lg/50 justify-between ${isCollapsed ? "w-[75px]" : "w-[300px]"}`}>
-      <div className="flex flex-col gap-12">
+    <div className={`flex flex-col gap-12 pt-4 transition-[width] duration-300 ease-in-out bg-[#16151C] rounded-l-lg shadow-lg/50 justify-between ${isCollapsed ? "w-[75px]" : "w-[300px]"}`}>
+      <div className="flex flex-col gap-12 pl-4">
         <div className={`flex ${isCollapsed ? "justify-center" : "justify-between"}`}>
           {/* GENEVA LOGO */}
           <div className={isCollapsed ? "hidden" : "flex flex-col w-full pb-4 border-b border-gray-400"}>
@@ -64,9 +64,25 @@ export default function SlidingNavbar () {
       </div>
 
       {/* Mock Organization Account Info */}
-      <div className="">
-      </div>
-
+      {isCollapsed ? (
+        <div className="bg-[#616173] p-4 rounded-bl-lg">
+          <Image
+            src="/images/cdpr-logo.png"
+            alt="Mock Organization Account Info Small"
+            width={79}
+            height={79}
+            className="cursor-not-allowed w-[35px] h-auto self-center"
+          />
+        </div>
+      ): (
+        <Image
+          src="/images/projekt-red-org.png"
+          alt="Mock Organization Account Info"
+          width={353}
+          height={108}
+          className="cursor-not-allowed"
+        />
+      )}
     </div>
   );
 }

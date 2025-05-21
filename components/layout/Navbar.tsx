@@ -49,7 +49,7 @@ export default function Navbar() {
         {/* Right Side of Navbar */}
         {/* @TODO FAKE/MOCK LOGIN */}
         <Image
-          src="/images/avatar.png"
+          src="/images/cdpr-avatar.png"
           alt="mock avatar icon"
           width={186}
           height={55}
