@@ -4,6 +4,7 @@ import { IGame } from "@/app/lib/types/store.types";
 import GameTag from "../text-content/GameTag";
 import AutoPlayVideo from "./AutoPlayVideo";
 import PriceTag from "./PriceTag";
+// import { startGame } from "@/app/actions";
 
 interface FeaturedGameProps {
   game: IGame
@@ -12,15 +13,20 @@ interface FeaturedGameProps {
 // @TODO a lot of logic for tags/recommended left unsaid
 
 export default function FeaturedGame({ game }: FeaturedGameProps) {
-  const goToGameDetailsPage = () => {
+  const goToGameDetailsPage = async () => {
     // use the game id to create a dynamic route for the game details page
     console.log("click to details on ", game.title);
+    // but for now just handle the play of cyberpunk only!!
+    // if (game.title === "Cyberpunk 2077") {
+    //   await startGame();
+    // }
   }
 
   return (
     <div className="flex gap-3 w-full justify-between cursor-pointer">
       <div
         className="w-[55%] max-h-[350px] border border-3 border-gray-300 rounded-md bg-cover bg-center cursor-pointer overflow-hidden relative"
+        onClick={goToGameDetailsPage}
       >
         <div
           className="absolute inset-0 transition-transform duration-300 ease-in-out hover:scale-105 bg-cover bg-center"

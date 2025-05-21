@@ -1,0 +1,1 @@
+export const GAME_URL = process.env.GAME_URL;
