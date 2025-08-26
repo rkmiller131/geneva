@@ -8,7 +8,7 @@ export default function DashboardLayout({
   return (
     <div className="relative min-h-screen flex bg-charcoal rounded-lg mt-12">
       <SlidingNavbar />
-      <div className="p-8">
+      <div className="p-8 w-full">
         {children}
       </div>
     </div>
