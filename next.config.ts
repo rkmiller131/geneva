@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.glitch.global',
+        hostname: 'res.cloudinary.com',
         port: '',
         pathname: '/**',
       },
