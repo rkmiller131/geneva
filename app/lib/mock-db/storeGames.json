@@ -10,7 +10,8 @@
     "isOnSale": true,
     "salePercentage": 60,
     "saleEndDate": 1748131200000,
-    "dateAdded": 1607472000000
+    "dateAdded": 1607472000000,
+    "rating": 87
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "isOnSale": false,
     "salePercentage": 0,
     "saleEndDate": null,
-    "dateAdded": 1787654400000
+    "dateAdded": 1787654400000,
+    "rating": 90
   },
   {
     "id": 3,
@@ -36,7 +38,8 @@
     "isOnSale": true,
     "salePercentage": 90,
     "saleEndDate": 1748131200000,
-    "dateAdded": 1431926400000
+    "dateAdded": 1431926400000,
+    "rating": 96
   },
   {
     "id": 4,
@@ -49,7 +52,8 @@
     "isOnSale": true,
     "salePercentage": 85,
     "saleEndDate": 1748131200000,
-    "dateAdded": 1305615600000
+    "dateAdded": 1305615600000,
+    "rating": 82
   },
   {
     "id": 5,
@@ -62,7 +66,8 @@
     "isOnSale": true,
     "salePercentage": 80,
     "saleEndDate": 1748131200000,
-    "dateAdded": 1541721600000
+    "dateAdded": 1541721600000,
+    "rating": 87
   },
   {
     "id": 6,
@@ -75,6 +80,7 @@
     "isOnSale": true,
     "salePercentage": 25,
     "saleEndDate": 1748131200000,
-    "dateAdded": 1695600000000
+    "dateAdded": 1695600000000,
+    "rating": 91
   }
 ]

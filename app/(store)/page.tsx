@@ -69,7 +69,7 @@ export default function Store() {
           </div>
 
           <div className="w-full mt-32">
-            <PaginatedGameList gameList={games.slice(0, 5)}/>
+            <PaginatedGameList gameList={games}/>
           </div>
         </div>
       </div>

@@ -56,15 +56,19 @@ interface PaginatedGameListProps {
 
 export default function PaginatedGameList ({ gameList }: PaginatedGameListProps) {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [filteredGames, setFilteredGames] = useState<IGame[]>(gameList);
 
   const handleAZFilter = () => {
     setSelectedTab(0);
+    setFilteredGames(gameList.sort((a, b) => a.title.localeCompare(b.title)).slice(0, 5));
   }
   const handleRatingsFilter = () => {
     setSelectedTab(1);
+    setFilteredGames(gameList.sort((a, b) => b.rating - a.rating).slice(0, 5));
   }
   const handleSaleFilter = () => {
     setSelectedTab(2);
+    setFilteredGames(gameList.filter((game) => game.isOnSale === true).slice(0, 5).sort((a, b) => b.salePercentage - a.salePercentage));
   }
 
   return (
@@ -113,7 +117,7 @@ export default function PaginatedGameList ({ gameList }: PaginatedGameListProps)
             className="scale-130 rotate-[27deg] mt-[25px]"
           />
           <div className="absolute w-full top-0 z-5 flex flex-col gap-2">
-            {gameList.map((game) => (
+            {filteredGames.map((game) => (
               <GameListItem game={game} key={game.id}/>
             ))}
           </div>

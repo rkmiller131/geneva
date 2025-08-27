@@ -12,6 +12,7 @@ export interface IGame {
   salePercentage: number;
   saleEndDate: number | null;
   dateAdded: number;
+  rating: number;
 }
 
 export interface IFilterTab {
