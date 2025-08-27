@@ -45,7 +45,7 @@ export default function FeaturedGame({ game }: FeaturedGameProps) {
           because you played games tagged with:
         </p>
         {/* TAGS */}
-        <div className="flex gap-1 flex-wrap">
+        <div className="flex gap-1 flex-wrap mb-4">
           {game.tags.map((tag, i) => (
             <GameTag text={tag} key={i} />
           ))}

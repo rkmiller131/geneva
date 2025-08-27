@@ -98,13 +98,13 @@ export default function TriOffsetCarousel({ gameList }: TriOffsetCarouselProps) 
       rightCard.style.zIndex = "5";
 
       // Move center card to right
-      centerCard.style.transform = "translateX(175%) translateY(0%)";
+      centerCard.style.transform = "translateX(180%) translateY(0%)";
 
       // Move left card to center (and up)
       leftCard.style.transform = "translateX(0%) translateY(-20%)";
 
       // Move right card to left
-      rightCard.style.transform = "translateX(-175%) translateY(0%)";
+      rightCard.style.transform = "translateX(-180%) translateY(0%)";
 
       // Update the state after animation completes
       setTimeout(() => {

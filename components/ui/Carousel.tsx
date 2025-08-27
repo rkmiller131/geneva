@@ -11,7 +11,7 @@ type CarouselProps = {
 
 export default function Carousel({
   children,
-  slideTransition = "transform duration-500 ease-in-out",
+  slideTransition = "transition-all duration-500 ease-in-out",
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemCount = children.length;
@@ -49,7 +49,7 @@ export default function Carousel({
             {children.map((child, index) => (
               <div
                 key={index}
-                className="w-full flex-shrink-0"
+                className={`w-full flex-shrink-0 ${index !== currentIndex ? "opacity-0" : "opacity-100"}`}
                 aria-hidden={index !== currentIndex}
               >
                 {child}

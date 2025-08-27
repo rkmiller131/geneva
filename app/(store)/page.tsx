@@ -9,8 +9,9 @@ import games from "../lib/mock-db/storeGames.json";
 import PaginatedGameList from "@/components/ui/PaginatedGameList";
 
 export default function Store() {
-  const featuredGames: Array<IGame> = games.slice(0, 3);
-  const specialOffers: Array<IGame> = games.filter((game) => game.isOnSale === true).reverse();
+  const featuredGames: Array<IGame> = games.slice(0, 4);
+  // The triset carousel only looks good with 3 games
+  const specialOffers: Array<IGame> = games.filter((game) => game.isOnSale === true).reverse().slice(0, 3);
 
   return (
     <div className="flex flex-col gap-4">
